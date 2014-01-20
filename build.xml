@@ -1,0 +1,61 @@
+<project name="expression-evaluator">
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="cleanClasses">
+        <delete dir="build/classes"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="build/classes/src"/>
+        <mkdir dir="build/classes/test"/>
+    </target>
+    <target name="compile-source" depends="init">
+        <javac srcdir="src" destdir="build/classes/src" includeAntRuntime="false">
+        </javac>
+    </target>
+    <target name="compile-tests" depends="compile-source">
+        <javac srcdir="test" destdir="build/classes/test"
+               classpath="dependencies/junit-4.10.jar;build/classes/src" includeAntRuntime="false">
+        </javac>
+    </target>
+    <target name="run-tests" depends="compile-tests">
+        <junit haltonfailure="yes">
+            <classpath>
+                <pathelement location="build/classes/src" />
+                <pathelement location="build/classes/test" />
+                <pathelement location="dependencies/junit-4.10.jar"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="build/classes/test">
+                    <include name="**/*Test*" />
+                </fileset>
+            </batchtest>
+            <formatter type = "brief" usefile = "false"/>
+        </junit>
+    </target>
+    <target name="createFolderStructure" depends="run-tests">
+        <mkdir dir="build/distribute/bin"/>
+        <mkdir dir="build/distribute/lib"/>
+    </target>
+    <target name="build" depends="createFolderStructure">
+        <jar destfile="build/distribute/lib/expression-evaluator.jar" basedir="build/classes/src"/>
+    </target>
+    <target name="copyShellScripts" depends="build">
+        <copy file="shellscripts/kajExpressionEvaluator.sh" todir="build/distribute/bin"/>
+    </target>
+    <target name="copyReadme" depends="copyShellScripts">
+        <copy file="README.md" todir="build/distribute"/>
+    </target>
+    <target name="docs" depends="build">
+        <javadoc packagenames="kajaljad.expressionevaluator.*"
+                 sourcepath="src"
+                 destdir="build/distribute/docs"
+                 author="true"
+                 version="true"/>
+    </target>
+    <target name="dist" depends="copyReadme,docs">
+        <zip zipfile="expression-evaluator.zip" basedir="build/distribute"/>
+    </target>
+</project>
