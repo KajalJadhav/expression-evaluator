@@ -1,1 +1,1 @@
-java -cp $EXPRESSION_EVALUATOR_SH/dependencies/expression-evaluator.jar kajaljad.expressionevaluator.cli.ExpressionEvaluatorClient "${@}"
+java -cp $EXPRESSION_EVALUATOR_SH/lib/expression-evaluator.jar kajaljad.expressionevaluator.cli.ExpressionEvaluatorClient "${@}"
