@@ -9,10 +9,8 @@ Evaluates the given Expressions...
    Set the path of your folder in this Variable
 3. Use Shell file to run the expression evaluator.
 
-# Release Notes
 
-## Version 0.1
-Requirements---
+## Release Notes for Version 0.1
   1. Accepts Positive and Negative numbers.
   2. Only Integer values should be given.
   3. Two Operands and One Operator is needed.
