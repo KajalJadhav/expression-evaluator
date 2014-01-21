@@ -1,24 +1,32 @@
 package kajaljad.expressionevaluator.lib;
 
 import org.junit.Test;
+
 import static junit.framework.Assert.assertEquals;
 
 public class ExpressionEvaluatorTest {
-    String input = "Hello World";
 
-    @Test
-    public void testCalculation() throws Exception {
-        ExpressionEvaluator ee = new ExpressionEvaluator(input);
-        String expected = "Hello World";
-        String actual = ee.calculation();
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void forWrongInput() {
+        ExpressionEvaluator ee = new ExpressionEvaluator("12345");
+        int expected = 12345;
+        int actual = ee.calculation();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testCalculationForWrongInput() throws Exception {
-        ExpressionEvaluator ee = new ExpressionEvaluator("I M Here");
-        String expected = "I M Here";
-        String actual = ee.calculation();
+    public void forAdditionOfTwoNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("1 + 2");
+        int expected = 3;
+        int actual = ee.calculation();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void forConditionIfOnlyOneOperandIsGiven() {
+        ExpressionEvaluator ee = new ExpressionEvaluator("1 + ");
+        int expected = 10;
+        int actual = ee.calculation();
         assertEquals(expected, actual);
     }
 }
