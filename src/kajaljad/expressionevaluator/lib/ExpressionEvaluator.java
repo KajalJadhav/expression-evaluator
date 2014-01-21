@@ -7,10 +7,6 @@ public class ExpressionEvaluator {
         this.expression = expression;
     }
 
-    public int sum(int number1, int number2) {
-        return number1 + number2;
-    }
-
     public int calculation() {
         String[] resultArray = this.expression.split(" ");
         int result = 0;
@@ -20,6 +16,16 @@ public class ExpressionEvaluator {
             return number1;
         if (0 == resultArray[1].compareTo("+"))
             result = sum(number1, number2);
+        if (0 == resultArray[1].compareTo("-"))
+            result = subtract(number1,number2);
         return result;
+    }
+
+    private int sum(int number1, int number2) {
+        return number1 + number2;
+    }
+
+    private int subtract(int number1, int number2) {
+        return number1 - number2;
     }
 }

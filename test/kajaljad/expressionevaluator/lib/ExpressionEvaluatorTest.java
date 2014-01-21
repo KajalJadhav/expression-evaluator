@@ -29,4 +29,12 @@ public class ExpressionEvaluatorTest {
         int actual = ee.calculation();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void forSubtractionOfTwoNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("2 - 1");
+        int expected = 1;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
 }
