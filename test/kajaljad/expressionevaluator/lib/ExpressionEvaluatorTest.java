@@ -22,6 +22,14 @@ public class ExpressionEvaluatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void forAdditionOfTwoNegativeNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("-1 + -2");
+        int expected = -3;
+        int actual = ee.calculation();
+        assertEquals(expected, actual);
+    }
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void forConditionIfOnlyOneOperandIsGiven() {
         ExpressionEvaluator ee = new ExpressionEvaluator("1 + ");
