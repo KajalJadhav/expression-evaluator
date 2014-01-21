@@ -20,7 +20,13 @@ public class ExpressionEvaluator {
             result = subtract(number1,number2);
         if (0 == resultArray[1].compareTo("*"))
             result = multiply(number1,number2);
+        if (0 == resultArray[1].compareTo("/"))
+            result = division(number1,number2);
         return result;
+    }
+
+    private int division(int number1, int number2) {
+        return number1 / number2;
     }
 
     private int multiply(int number1, int number2) {

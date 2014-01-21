@@ -45,4 +45,12 @@ public class ExpressionEvaluatorTest {
         int actual = ee.calculation();
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void forDivisionOfTwoNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("10 / 2");
+        int expected = 5;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
 }
