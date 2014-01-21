@@ -47,6 +47,14 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
+    public void forSubtractionOfTwoNegativeNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("-10 - -1");
+        int expected = -9;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
     public void forMultiplicationOfTwoNumbers() throws Exception {
         ExpressionEvaluator ee = new ExpressionEvaluator("1 * 2");
         int expected = 2;
