@@ -79,6 +79,14 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
+    public void forDivisionOfTwoNumbersWithNegativeNumber() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("-10 / 2");
+        int expected = -5;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
     public void forExponentialOfNumber() throws Exception {
         ExpressionEvaluator ee = new ExpressionEvaluator("10 ^ 2");
         int expeceted = 100;
