@@ -18,7 +18,13 @@ public class ExpressionEvaluator {
             result = sum(number1, number2);
         if (0 == resultArray[1].compareTo("-"))
             result = subtract(number1,number2);
+        if (0 == resultArray[1].compareTo("*"))
+            result = multiply(number1,number2);
         return result;
+    }
+
+    private int multiply(int number1, int number2) {
+        return number1 * number2;
     }
 
     private int sum(int number1, int number2) {

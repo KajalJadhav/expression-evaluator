@@ -37,4 +37,12 @@ public class ExpressionEvaluatorTest {
         int actual = ee.calculation();
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void forMultiplicationOfTwoNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("1 * 2");
+        int expected = 2;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
 }
