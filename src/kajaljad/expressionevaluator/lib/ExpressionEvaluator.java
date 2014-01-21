@@ -22,7 +22,13 @@ public class ExpressionEvaluator {
             result = multiply(number1,number2);
         if (0 == resultArray[1].compareTo("/"))
             result = division(number1,number2);
+        if (0 == resultArray[1].compareTo("^"))
+            result = exponential(number1,number2);
         return result;
+    }
+
+    private int exponential(int number1, int number2) {
+        return (int)(Math.pow(number1,number2));
     }
 
     private int division(int number1, int number2) {
