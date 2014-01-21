@@ -56,6 +56,6 @@
                  version="true"/>
     </target>
     <target name="dist" depends="copyReadme,docs">
-        <zip zipfile="expression-evaluator.zip" basedir="build/distribute"/>
+        <zip zipfile="evaluator-0.1.zip" basedir="build/distribute"/>
     </target>
 </project>
