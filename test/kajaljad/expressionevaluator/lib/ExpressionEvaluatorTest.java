@@ -89,8 +89,16 @@ public class ExpressionEvaluatorTest {
     @Test
     public void forExponentialOfNumber() throws Exception {
         ExpressionEvaluator ee = new ExpressionEvaluator("10 ^ 2");
-        int expeceted = 100;
+        int expected = 100;
         int actual = ee.calculation();
-        assertEquals(expeceted,actual);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forExponentialOfNegativeNumber() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator("-10 ^ 2");
+        int expected = 100;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
     }
 }
