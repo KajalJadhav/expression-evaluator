@@ -21,7 +21,8 @@ Requirements---
 Ex. "1 + 2" = 3
 
 Running Process---
-   Give - sh kajExpressionEvaluator.sh "1 + 2"
+   Give - sh kajExpressionEvaluator.sh [Expression]
+   Example - sh kajExpressionEvaluator.sh "1 + 2"
 
 
 
