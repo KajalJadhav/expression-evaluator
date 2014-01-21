@@ -16,6 +16,7 @@ Requirements---
   3. Two Operands and One Operator is needed.
   4. Space is needed between operands and operators.
   5. Operators should be one of this :- "+ - * / ^"
+  6. No Brackets are allowed
  
 Ex. "1 + 2" = 3
 
