@@ -48,14 +48,7 @@
     <target name="copyReadme" depends="copyShellScripts">
         <copy file="README.md" todir="build/distribute"/>
     </target>
-    <target name="docs" depends="build">
-        <javadoc packagenames="kajaljad.expressionevaluator.*"
-                 sourcepath="src"
-                 destdir="build/distribute/docs"
-                 author="true"
-                 version="true"/>
-    </target>
-    <target name="dist" depends="copyReadme,docs">
+    <target name="dist" depends="copyReadme">
         <zip zipfile="evaluator-0.2.zip" basedir="build/distribute"/>
     </target>
 </project>
