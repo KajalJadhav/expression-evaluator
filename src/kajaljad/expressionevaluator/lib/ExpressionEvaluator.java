@@ -1,5 +1,7 @@
 package kajaljad.expressionevaluator.lib;
 
+import java.util.ArrayList;
+
 public class ExpressionEvaluator {
     public String expression;
 
@@ -10,40 +12,22 @@ public class ExpressionEvaluator {
     public int calculation() {
         String[] resultArray = this.expression.split(" ");
         int result = 0;
-        int number1 = Integer.parseInt(resultArray[0]);
-        int number2 = Integer.parseInt(resultArray[2]);
-        if (resultArray.length == 1)
-            return number1;
-        if (0 == resultArray[1].compareTo("+"))
-            result = sum(number1, number2);
-        if (0 == resultArray[1].compareTo("-"))
-            result = subtract(number1,number2);
-        if (0 == resultArray[1].compareTo("*"))
-            result = multiply(number1,number2);
-        if (0 == resultArray[1].compareTo("/"))
-            result = division(number1,number2);
-        if (0 == resultArray[1].compareTo("^"))
-            result = exponential(number1,number2);
+        Operations operations = new Operations();
+        ArrayList<Integer> operands = new ArrayList<Integer>();
+        ArrayList<String> operators = new ArrayList<String>();
+        try {
+            for (int i = 0; i < resultArray.length; i = i + 2) {
+                operands.add(Integer.valueOf(resultArray[i]));
+                if (i == resultArray.length - 1)
+                    break;
+                operators.add(resultArray[i + 1]);
+            }
+            result = operands.get(0);
+            for (int i = 1; i < operands.size(); ++i)
+                result = operations.performOperations(operators.get(i - 1), result, operands.get(i));
+        } catch (Exception e) {
+            System.err.println("Error");
+        }
         return result;
-    }
-
-    private int exponential(int number1, int number2) {
-        return (int)(Math.pow(number1,number2));
-    }
-
-    private int division(int number1, int number2) {
-        return number1 / number2;
-    }
-
-    private int multiply(int number1, int number2) {
-        return number1 * number2;
-    }
-
-    private int sum(int number1, int number2) {
-        return number1 + number2;
-    }
-
-    private int subtract(int number1, int number2) {
-        return number1 - number2;
     }
 }

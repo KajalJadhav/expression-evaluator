@@ -1,4 +1,4 @@
-<project name="expression-evaluator">
+<project name="expression-evaluator" default = "dist">
     <target name="clean">
         <delete dir="build"/>
     </target>
@@ -56,6 +56,6 @@
                  version="true"/>
     </target>
     <target name="dist" depends="copyReadme,docs">
-        <zip zipfile="evaluator-0.1.zip" basedir="build/distribute"/>
+        <zip zipfile="evaluator-0.2.zip" basedir="build/distribute"/>
     </target>
 </project>
