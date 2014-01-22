@@ -104,6 +104,15 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
+    public void forAdditionOfThreeNumbersWithNegativeNumber() throws Exception {
+        String expression = "2 + 2 + -2";
+        int expected = 2;
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int actual = ee.calculation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void forSubtractionOfThreeNumbers() throws Exception {
         String expression = "10 - 2 - 2";
         int expected = 6;
@@ -121,8 +130,18 @@ public class ExpressionEvaluatorTest {
         assertEquals(expected,actual);
     }
 
+
     @Test
-    public void forThreeOperatorsAndFourOperands() {
+    public void forTwoOperatorsAndThreeOperandsWithNegativeValue() throws Exception{
+        String expression = "1 + 2 * -3";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int expected = -9;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forThreeOperatorsAndFourOperands() throws Exception{
         String expression = "1 + 2 * 3 - 4";
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         int expected = 5;
@@ -131,7 +150,7 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void forFourOperatorsAndFiveOperands() {
+    public void forFourOperatorsAndFiveOperands() throws Exception{
         String expression = "1 + 2 * 3 - 4 / 5";
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         int expected = 1;
@@ -140,8 +159,18 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void forFiveOperatorsAndSixOperands() {
-        ExpressionEvaluator ee = new ExpressionEvaluator("1 + 2 * 3 - 4 / 5 ^ 6");
+    public void forFiveOperatorsAndSixOperands() throws Exception{
+        String expression = "1 + 2 * 3 - 4 / 5 ^ 6";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int expected = 1;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingMultipleOperandsAndOperatorsWithNegativeValue() throws Exception{
+        String expression = "1 + 2 * 3 - 4 / 5 ^ -6";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         int expected = 1;
         int actual = ee.calculation();
         assertEquals(expected,actual);
