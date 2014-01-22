@@ -111,4 +111,39 @@ public class ExpressionEvaluatorTest {
         int actual = ee.calculation();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void forTwoOperatorsAndThreeOperands() throws Exception{
+        String expression = "1 + 2 * 3";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int expected = 9;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forThreeOperatorsAndFourOperands() {
+        String expression = "1 + 2 * 3 - 4";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int expected = 5;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forFourOperatorsAndFiveOperands() {
+        String expression = "1 + 2 * 3 - 4 / 5";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        int expected = 1;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forFiveOperatorsAndSixOperands() {
+        ExpressionEvaluator ee = new ExpressionEvaluator("1 + 2 * 3 - 4 / 5 ^ 6");
+        int expected = 1;
+        int actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
 }
