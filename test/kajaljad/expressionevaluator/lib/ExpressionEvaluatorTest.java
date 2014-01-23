@@ -177,4 +177,19 @@ public class ExpressionEvaluatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void forHandlingOperatorsAndOperandsWithMultipleBrackets() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 11;
+        double actual = ee.calculation("1 + ( 2 * 3 ) + ( 6 - 2 )");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testCheckingForDivisionOfNumberWhenOutputIdFloatingPoint() {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 7.333333333333333;
+        double actual = ee.calculation("22 / 3");
+        assertEquals(expected,actual);
+    }
 }
