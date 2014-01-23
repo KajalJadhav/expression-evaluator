@@ -232,4 +232,12 @@ public class ExpressionEvaluatorTest {
         double actual = ee.calculation("1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / 5 ) ^ 2 )");
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void forHandlingNestedBracketsInNestedBracketsWithNegativeNumbers() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 1.0;
+        double actual = ee.calculation("1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / -5 ) ^ 2 )");
+        assertEquals(expected,actual);
+    }
 }
