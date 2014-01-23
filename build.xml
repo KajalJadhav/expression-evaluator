@@ -50,7 +50,7 @@
         </cobertura-instrument>
     </target>
 
-    <target name="run-tests" >
+    <target name="run-tests" depends="compile-tests" >
         <junit fork="yes" dir="." failureProperty="test.failed" haltonfailure="yes">
             <classpath>
                 <pathelement location="build/code-coverage/instrumented"/>
@@ -102,23 +102,23 @@
             description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
 
     <target name="createFolderStructure" depends="run-tests">
-        <mkdir dir="build/distribute/bin"/>
-        <mkdir dir="build/distribute/lib"/>
+        <mkdir dir="build/dist/bin"/>
+        <mkdir dir="build/dist/lib"/>
     </target>
 
     <target name="build" depends="createFolderStructure">
-        <jar destfile="build/distribute/lib/expression-evaluator.jar" basedir="build/classes/src"/>
+        <jar destfile="build/dist/lib/expression-evaluator.jar" basedir="build/classes/src"/>
     </target>
 
     <target name="copyShellScripts" depends="build">
-        <copy file="shellscripts/kajExpressionEvaluator.sh" todir="build/distribute/bin"/>
+        <copy file="shellscripts/kajExpressionEvaluator.sh" todir="build/dist/bin"/>
     </target>
 
     <target name="copyReadme" depends="copyShellScripts">
-        <copy file="README.md" todir="build/distribute"/>
+        <copy file="README.md" todir="build/dist"/>
     </target>
 
     <target name="dist" depends="coverage,copyReadme">
-        <zip zipfile="evaluator-0.4.zip" basedir="build/distribute" update="true"/>
+        <zip zipfile="evaluator-0.4.zip" basedir="build/dist" update="true"/>
     </target>
 </project>
