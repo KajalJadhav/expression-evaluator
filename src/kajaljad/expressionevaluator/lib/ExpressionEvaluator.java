@@ -15,13 +15,14 @@ public class ExpressionEvaluator {
             operators.add(resultArray[i + 1]);
         }
         result = operands.get(0);
-            for (int i = 1; i < operands.size(); ++i)
-                result = operations.performOperations(operators.get(i - 1), result, operands.get(i));
-            return result;
-        }
+        for (int i = 1; i < operands.size(); ++i)
+            result = operations.performOperations(operators.get(i - 1), result, operands.get(i));
+        return result;
+    }
 
     public double calculation(String expression) {
-        StringBuilder originalString = new StringBuilder(expression);
+        String input = parseInput(expression);
+        StringBuilder originalString = new StringBuilder(input);
         int startingIndex = 0;
         int endingIndex = 0;
         double result = 0;
@@ -29,23 +30,35 @@ public class ExpressionEvaluator {
         for (int i = 0; i < originalString.length(); i++) {
             if ('(' == originalString.charAt(i))
                 startingIndex = i;
-            if (')' == originalString.charAt(i)){
+            if (')' == originalString.charAt(i)) {
                 endingIndex = i;
                 break;
             }
         }
         if (startingIndex != 0) {
-            String singleOperation = originalString.substring(startingIndex + 2,endingIndex);
+            String singleOperation = originalString.substring(startingIndex + 2, endingIndex);
             String tempResultString = singleOperation;
-            resultArray = tempResultString.split(" ");
+            resultArray = tempResultString.trim().split("\\s+");
         } else {
-            resultArray = originalString.toString().split(" ");
+            resultArray = originalString.toString().split("\\s+");
         }
         result = calculate(resultArray);
         if (startingIndex != 0) {
-            originalString.replace(startingIndex,endingIndex + 1,Double.toString(result));
+            originalString.replace(startingIndex, endingIndex + 1, Double.toString(result));
             return calculation(originalString.toString());
         }
         return result;
+    }
+
+    public String parseInput(String input) {
+        return input.trim().replaceAll(" +", " ")
+                .replaceAll("\\+", " + ")
+                .replaceAll("\\-", " - ")
+                .replaceAll("\\*", " * ")
+                .replaceAll("\\/", " / ")
+                .replaceAll("\\^", " ^ ")
+                .replaceAll("\\(+", " ( ")
+                .replaceAll(" - ", " -")
+                .replaceFirst("^ - ", "-");
     }
 }
