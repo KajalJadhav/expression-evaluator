@@ -44,7 +44,7 @@ public class Operations {
         });
         this.operationMap = map;
     }
-    public double performOperations(String operator, double number1, Double number2) {
+    public double performOperations(String operator, double number1, double number2) {
         return operationMap.get(operator).evaluate(number1,number2);
     }
 

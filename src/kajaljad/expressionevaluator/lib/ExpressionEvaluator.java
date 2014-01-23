@@ -22,11 +22,19 @@ public class ExpressionEvaluator {
 
     public double calculation(String expression) {
         StringBuilder originalString = new StringBuilder(expression);
-        int startingIndex = originalString.indexOf("(");
-        int endingIndex = originalString.indexOf(")");
+        int startingIndex = 0;
+        int endingIndex = 0;
         double result = 0;
         String[] resultArray;
-        if (startingIndex != -1) {
+        for (int i = 0; i < originalString.length(); i++) {
+            if ('(' == originalString.charAt(i))
+                startingIndex = i;
+            if (')' == originalString.charAt(i)){
+                endingIndex = i;
+                break;
+            }
+        }
+        if (startingIndex != 0) {
             String singleOperation = originalString.substring(startingIndex + 2,endingIndex);
             String tempResultString = singleOperation;
             resultArray = tempResultString.split(" ");
@@ -34,7 +42,7 @@ public class ExpressionEvaluator {
             resultArray = originalString.toString().split(" ");
         }
         result = calculate(resultArray);
-        if (startingIndex != -1) {
+        if (startingIndex != 0) {
             originalString.replace(startingIndex,endingIndex + 1,Double.toString(result));
             return calculation(originalString.toString());
         }

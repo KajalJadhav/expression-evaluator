@@ -186,10 +186,50 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void testCheckingForDivisionOfNumberWhenOutputIdFloatingPoint() {
+    public void forCheckingDivisionOfNumberWhenOutputIsFloatingPoint() throws Exception{
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7.333333333333333;
         double actual = ee.calculation("22 / 3");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingExponential() throws Exception{
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 2.147483648E9;
+        double actual = ee.calculation("2 ^ 31");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingSingleNestedBrackets() throws Exception{
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 8;
+        double actual = ee.calculation("1 + ( 2 + ( 2 + 3 ) )");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingMultipleBrackets() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 17.0;
+        double actual = ee.calculation("1 + ( ( 2 * 3 ) + ( 10 / 5 ) * 2 )");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingMultipleNestedBrackets() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 65.0;
+        double actual = ee.calculation("1 + ( ( 2 * 3 ) + ( 10 / 5 ) ^ 2 )");
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forHandlingNestedBracketsInNestedBrackets() throws Exception {
+        ExpressionEvaluator ee = new ExpressionEvaluator();
+        double expected = 17.0;
+        double actual = ee.calculation("1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / 5 ) ^ 2 )");
         assertEquals(expected,actual);
     }
 }
