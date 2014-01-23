@@ -13,12 +13,25 @@ Evaluates the given Expressions...
      Give - sh kajExpressionEvaluator.sh [Expression]
      Example - sh kajExpressionEvaluator.sh "1 + 2"
      
+### Release Notes for Version 0.4
+    1. Accepts Positive and Negative numbers.
+    2. Only Integer values should be given.
+    3. Accepts Multiple Operands and Operators.
+    4. Can have Operators such as :- "+ - * / ^"
+    5. Multiple Brackets are allowed.
+    6. Space is must between operands, operators and brackets.
+    7. Handles 2 ^ 31
+    
+    Ex. "1 + ( ( 2 * 3 ) + ( 10 / 5 ) ^ 2 )" = 65
+        "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / 5 ) ^ 2 )" = 17
+        "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / -5 ) ^ 2 )" = 1
+    
 ### Release Notes for Version 0.3
     1. Accepts Positive and Negative numbers.
     2. Only Integer values should be given.
     3. Accepts Multiple Operands and Operators.
     4. Can have Operators such as :- "+ - * / ^"
-    5. Brackets are allowed.
+    5. Single Brackets are allowed.
     6. Space is must between operands, operators and brackets.
     7. Handles 22 / 3
     8. Handles 22
