@@ -21,7 +21,7 @@ Evaluates the given Expressions...
     5. Brackets are allowed.
     6. Space is must between operands, operators and brackets.
     7. Handles 22 / 3
-    8. HAndles 22
+    8. Handles 22
     
     Ex. "1 + ( 2 + 3 )" = 6
         "1 + ( 2 * 3 ) + ( 6 - 2 )" = 11
