@@ -119,6 +119,6 @@
     </target>
 
     <target name="dist" depends="coverage,copyReadme">
-        <zip zipfile="evaluator-0.2.zip" basedir="build/distribute" update="true"/>
+        <zip zipfile="evaluator-0.3.zip" basedir="build/distribute" update="true"/>
     </target>
 </project>
