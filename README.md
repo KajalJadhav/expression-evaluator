@@ -12,6 +12,14 @@ Evaluates the given Expressions...
 ### Running Process
      Give - sh kajExpressionEvaluator.sh [Expression]
      Example - sh kajExpressionEvaluator.sh "1 + 2"
+
+## Release Notes for Version 0.6
+    1. Accepts Positive,Negative and Floating Point numbers.
+    2. Handles Spaces.
+    3. Can have Operators such as :- "+ - * / ^"
+
+    Ex. "-1-1" = -2
+        "(((((3)))))" = 3
   
 ### Release Notes for Version 0.5
     1. Accepts Positive Integers and Floating Point numbers.

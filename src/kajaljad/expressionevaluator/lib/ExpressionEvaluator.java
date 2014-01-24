@@ -1,64 +1,90 @@
 package kajaljad.expressionevaluator.lib;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExpressionEvaluator {
-    public double calculate(String[] resultArray) {
-        double result = 0;
-        Operations operations = new Operations();
-        ArrayList<Double> operands = new ArrayList<Double>();
-        ArrayList<String> operators = new ArrayList<String>();
-        for (int i = 0; i < resultArray.length; i = i + 2) {
-            operands.add(Double.valueOf(resultArray[i]));
-            if (i == resultArray.length - 1)
-                break;
-            operators.add(resultArray[i + 1]);
-        }
-        result = operands.get(0);
-        for (int i = 1; i < operands.size(); ++i)
-            result = operations.performOperations(operators.get(i - 1), result, operands.get(i));
-        return result;
+    private String expression;
+
+    public ExpressionEvaluator(String expression) {
+        this.expression = expression;
     }
 
-    public double calculation(String expression) {
-        String input = parseInput(expression);
-        StringBuilder originalString = new StringBuilder(input);
-        int startingIndex = 0;
-        int endingIndex = 0;
-        double result = 0;
-        String[] resultArray;
-        for (int i = 0; i < originalString.length(); i++) {
-            if ('(' == originalString.charAt(i))
+    private double calculateExpression(String expression) {
+        String[] expressionParts = expression.trim().split(" ");
+        List<Double> operands = new ArrayList<Double>();
+        List<String> operators = new ArrayList<String>();
+        filterOperandsAndOperators(expressionParts,operators,operands);
+        return calculate(operators, operands);
+    }
+
+    private double calculate(List<String> operators,List<Double> operands) {
+        Operations operations = new Operations();
+        double number1 = operands.get(0);
+        for (int i = 0; i < operators.size(); i++) {
+            String operator = operators.get(i);
+            double number2 = operands.get(i + 1);
+            number1 = operations.performOperations(operator,number1,number2);
+        }
+        return number1;
+    }
+
+    public double calculateExpression() {
+        return calculateExpression(this.expression);
+    }
+
+    private void filterOperandsAndOperators(String[] expressionParts, List<String> operators, List<Double> operands) {
+        for (String expressionPart : expressionParts) {
+            try {
+                operands.add(Double.parseDouble(expressionPart));
+            } catch (Exception e) {
+                operators.add(expressionPart);
+            }
+        }
+    }
+
+    private double calculation(String inputExpression) {
+        StringBuilder expression = new StringBuilder(inputExpression);
+        if(expression.indexOf("(") > -1) {
+            calculateBrackets(expression);
+            return calculation(expression.toString());
+        }
+        return calculateExpression(expression.toString());
+    }
+
+    public double calculation() {
+        String expressionWithoutSpaces = this.parseInput();
+        return calculation(expressionWithoutSpaces);
+    }
+
+    private void calculateBrackets(StringBuilder expression) {
+        int startingIndex = -1;
+        int endingIndex = -1;
+        double result;
+        for (int i = 0; i < expression.length(); i++) {
+            if ('(' == expression.charAt(i))
                 startingIndex = i;
-            if (')' == originalString.charAt(i)) {
+            if (')' == expression.charAt(i)) {
                 endingIndex = i;
                 break;
             }
         }
-        if (startingIndex != 0) {
-            String singleOperation = originalString.substring(startingIndex + 2, endingIndex);
-            String tempResultString = singleOperation;
-            resultArray = tempResultString.trim().split("\\s+");
-        } else {
-            resultArray = originalString.toString().split("\\s+");
-        }
-        result = calculate(resultArray);
-        if (startingIndex != 0) {
-            originalString.replace(startingIndex, endingIndex + 1, Double.toString(result));
-            return calculation(originalString.toString());
-        }
-        return result;
+        String expressionInsideBrackets = expression.substring(startingIndex + 1,endingIndex);
+        result = calculateExpression(expressionInsideBrackets);
+        expression.replace(startingIndex,endingIndex + 1,Double.toString(result));
     }
 
-    public String parseInput(String input) {
-        return input.trim().replaceAll(" +", " ")
-                .replaceAll("\\+", " + ")
+    public String parseInput() {
+        String expression = this.expression;
+        expression = expression.replaceAll(" +","");
+        return expression.replaceAll("\\+", " + ")
                 .replaceAll("\\-", " - ")
                 .replaceAll("\\*", " * ")
-                .replaceAll("\\/", " / ")
+                .replaceAll("/", " / ")
                 .replaceAll("\\^", " ^ ")
-                .replaceAll("\\(+", " ( ")
-                .replaceAll(" - ", " -")
+                .replaceAll("\\(", "( ")
+                .replaceAll("\\)"," )")
+                .replaceAll("  - ", " -")
                 .replaceFirst("^ - ", "-");
     }
 }
