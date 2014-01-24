@@ -350,11 +350,56 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void testForGivingOneOperand() throws Exception {
+    public void forGivingOneOperand() throws Exception {
         String expression = "(((((3)))))";
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         double expected = 3;
         double actual = ee.calculation();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void forNegativeOperandAfterNegativeOperator() throws Exception {
+        String expression = "1.25--0.25";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        double expected = 1.5;
+        double actual = ee.calculation();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void forHandlingExceptionIfCharacterIsGivenInExpression() {
+        String expression = "a1+2";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        double expected = 0;
+        double actual = ee.calculation();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void forHandlingExceptionForSingleOperatorWithSingleOperand() throws Exception {
+        String expression = "22*";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        double expected = 0;
+        double actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forNegativeExponential() throws Exception {
+        String expression = "8^-1";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        double expected = 0.125;
+        double actual = ee.calculation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void forFloatingPoint() throws Exception {
+        String expression = ".5+.5";
+        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        double expected = 1;
+        double actual = ee.calculation();
+        assertEquals(expected,actual);
     }
 }
