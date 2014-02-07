@@ -5,21 +5,24 @@ import java.util.List;
 
 public class ExpressionEvaluator {
 
+    private ExpressionParser expressionParser = new ExpressionParser();
+    private Operations operations = new Operations();
+
     private double calculateExpression(String expression) {
         String[] expressionParts = expression.trim().split(" ");
         List<Double> operands = new ArrayList<Double>();
         List<String> operators = new ArrayList<String>();
-        filterOperandsAndOperators(expressionParts,operators,operands);
+        filterOperandsAndOperators(expressionParts, operators, operands);
         return calculate(operators, operands);
     }
 
-    private double calculate(List<String> operators,List<Double> operands) {
-        Operations operations = new Operations();
+    private double calculate(List<String> operators, List<Double> operands) {
+
         double number1 = operands.get(0);
         for (int i = 0; i < operators.size(); i++) {
             String operator = operators.get(i);
             double number2 = operands.get(i + 1);
-            number1 = operations.performOperations(operator,number1,number2);
+            number1 = operations.performOperations(operator, number1, number2);
         }
         return number1;
     }
@@ -35,9 +38,9 @@ public class ExpressionEvaluator {
     }
 
     public double calculation(String newExpression) {
-            newExpression= parseInput(newExpression);
-        StringBuilder expression =new StringBuilder(newExpression);
-        if(expression.indexOf("(") > -1) {
+        newExpression = expressionParser.parseInput(newExpression);
+        StringBuilder expression = new StringBuilder(newExpression);
+        if (expression.indexOf("(") > -1) {
             calculateBrackets(expression);
             return calculation(expression.toString());
         }
@@ -56,21 +59,9 @@ public class ExpressionEvaluator {
                 break;
             }
         }
-        String expressionInsideBrackets = expression.substring(startingIndex + 1,endingIndex);
+        String expressionInsideBrackets = expression.substring(startingIndex + 1, endingIndex);
         result = calculateExpression(expressionInsideBrackets);
-        expression.replace(startingIndex,endingIndex + 1,Double.toString(result));
+        expression.replace(startingIndex, endingIndex + 1, Double.toString(result));
     }
 
-    public String parseInput(String expression) {
-        expression = expression.replaceAll(" +","");
-        return expression.replaceAll("\\+", " + ")
-                .replaceAll("\\-", " - ")
-                .replaceAll("\\*", " * ")
-                .replaceAll("/", " / ")
-                .replaceAll("\\^", " ^ ")
-                .replaceAll("\\(", "( ")
-                .replaceAll("\\)"," )")
-                .replaceAll("  - ", " -")
-                .replaceFirst("^ - ", "-");
-    }
 }
