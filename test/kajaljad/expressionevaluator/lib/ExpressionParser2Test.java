@@ -44,8 +44,17 @@ public class ExpressionParser2Test {
     }
 
     @Test
+    public void _2_plus_3_brackets() {
+        assertEquals(parse("( 2 + 3 )"), new BracketExpression(_2_plus_3));
+    }
+
+    @Test
     public void _2_plus_3_plus_4() {
         assertEquals(parse("2 + 3 + 4"), _2_plus_3_plus_4);
+    }
+    @Test
+    public void _2_plus_3_plus_4_bracket() {
+        assertEquals(parse("( 2 + 3 + 4 )"), new BracketExpression(_2_plus_3_plus_4));
     }
 
 }
