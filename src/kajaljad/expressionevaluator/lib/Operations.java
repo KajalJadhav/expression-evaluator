@@ -10,33 +10,27 @@ public class Operations {
     Map<String,Evaluate> operationMap =new HashMap<String, Evaluate>();
 
     public Operations() {
-
         operationMap.put("+", new Evaluate() {
-            @Override
             public double evaluate(double number1, double number2) {
                 return number1 + number2;
             }
         });
         operationMap.put("-", new Evaluate() {
-            @Override
             public double evaluate(double number1, double number2) {
                 return number1 - number2;
             }
         });
         operationMap.put("*", new Evaluate() {
-            @Override
             public double evaluate(double number1, double number2) {
                 return number1 * number2;
             }
         });
         operationMap.put("/", new Evaluate() {
-            @Override
             public double evaluate(double number1, double number2) {
                 return number1 / number2;
             }
         });
         operationMap.put("^", new Evaluate() {
-            @Override
             public double evaluate(double number1, double number2) {
                 return Math.pow(number1, number2);
             }

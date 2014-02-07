@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressionEvaluator {
-    private String expression;
-
-    public ExpressionEvaluator(String expression) {
-        this.expression = expression;
-    }
 
     private double calculateExpression(String expression) {
         String[] expressionParts = expression.trim().split(" ");
@@ -29,10 +24,6 @@ public class ExpressionEvaluator {
         return number1;
     }
 
-    public double calculateExpression() {
-        return calculateExpression(this.expression);
-    }
-
     private void filterOperandsAndOperators(String[] expressionParts, List<String> operators, List<Double> operands) {
         for (String expressionPart : expressionParts) {
             try {
@@ -43,18 +34,14 @@ public class ExpressionEvaluator {
         }
     }
 
-    private double calculation(String inputExpression) {
-        StringBuilder expression = new StringBuilder(inputExpression);
+    public double calculation(String newExpression) {
+            newExpression= parseInput(newExpression);
+        StringBuilder expression =new StringBuilder(newExpression);
         if(expression.indexOf("(") > -1) {
             calculateBrackets(expression);
             return calculation(expression.toString());
         }
         return calculateExpression(expression.toString());
-    }
-
-    public double calculation() {
-        String expressionWithoutSpaces = this.parseInput();
-        return calculation(expressionWithoutSpaces);
     }
 
     private void calculateBrackets(StringBuilder expression) {
@@ -74,8 +61,7 @@ public class ExpressionEvaluator {
         expression.replace(startingIndex,endingIndex + 1,Double.toString(result));
     }
 
-    public String parseInput() {
-        String expression = this.expression;
+    public String parseInput(String expression) {
         expression = expression.replaceAll(" +","");
         return expression.replaceAll("\\+", " + ")
                 .replaceAll("\\-", " - ")

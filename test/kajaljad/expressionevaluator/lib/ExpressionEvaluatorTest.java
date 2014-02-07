@@ -6,398 +6,398 @@ import static junit.framework.Assert.assertEquals;
 
 public class ExpressionEvaluatorTest {
     @Test
-    public void forWrongInput() throws Exception {
+    public void forWrongInput() {
         String expression = "12345";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 12345;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forAdditionOfTwoNumbers() throws Exception {
+    public void forAdditionOfTwoNumbers() {
         String expression = "1 + 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forAdditionOfTwoNegativeNumbers() throws Exception {
+    public void forAdditionOfTwoNegativeNumbers() {
         String expression = "-1 + -2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -3;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSubtractionOfTwoNumbers() throws Exception {
+    public void forSubtractionOfTwoNumbers() {
         String expression = "2 - 1";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSubtractionOfTwoNegativeNumbers() throws Exception {
+    public void forSubtractionOfTwoNegativeNumbers() {
         String expression = "-10 - -1";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -9;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forMultiplicationOfTwoNumbers() throws Exception {
+    public void forMultiplicationOfTwoNumbers() {
         String expression = "1 * 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forMultiplicationOfTwoNumbersWithNegativeNumber() throws Exception {
+    public void forMultiplicationOfTwoNumbersWithNegativeNumber() {
         String expression = "10 * -2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -20;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forDivisionOfTwoNumbers() throws Exception {
+    public void forDivisionOfTwoNumbers() {
         String expression = "10 / 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forDivisionOfTwoNumbersWithNegativeNumber() throws Exception {
+    public void forDivisionOfTwoNumbersWithNegativeNumber() {
         String expression = "-10 / 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -5;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forExponentialOfNumber() throws Exception {
+    public void forExponentialOfNumber() {
         String expression = "10 ^ 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 100;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forAdditionOfThreeNumbers() throws Exception {
+    public void forAdditionOfThreeNumbers() {
         String expression = "2 + 2 + 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forAdditionOfThreeNumbersWithNegativeNumber() throws Exception {
+    public void forAdditionOfThreeNumbersWithNegativeNumber() {
         String expression = "2 + 2 + -2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forExponentialOfNegativeNumber() throws Exception {
+    public void forExponentialOfNegativeNumber() {
         String expression = "-10 ^ 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 100;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSubtractionOfThreeNumbers() throws Exception {
+    public void forSubtractionOfThreeNumbers() {
         String expression = "10 - 2 - 2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forTwoOperatorsAndThreeOperands() throws Exception {
+    public void forTwoOperatorsAndThreeOperands() {
         String expression = "1 + 2 * 3";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 9;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forTwoOperatorsAndThreeOperandsWithNegativeValue() throws Exception {
+    public void forTwoOperatorsAndThreeOperandsWithNegativeValue() {
         String expression = "1 + 2 * -3";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -9;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forThreeOperatorsAndFourOperands() throws Exception {
+    public void forThreeOperatorsAndFourOperands() {
         String expression = "1 + 2 * 3 - 4";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forFourOperatorsAndFiveOperands() throws Exception {
+    public void forFourOperatorsAndFiveOperands() {
         String expression = "1 + 2 * 3 - 4 / 5";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forFiveOperatorsAndSixOperands() throws Exception {
+    public void forFiveOperatorsAndSixOperands() {
         String expression = "1 + 2 * 3 - 4 / 5 ^ 6";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingMultipleOperandsAndOperatorsWithNegativeValue() throws Exception {
+    public void forHandlingMultipleOperandsAndOperatorsWithNegativeValue() {
         String expression = "1 + 2 * 3 - 4 / 5 ^ -6";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingOperatorsAndOperandWithSingleBracket() throws Exception {
+    public void forHandlingOperatorsAndOperandWithSingleBracket() {
         String expression = "1 + ( 2 + 3 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingOperatorsAndOperandsWithMultipleBrackets() throws Exception {
+    public void forHandlingOperatorsAndOperandsWithMultipleBrackets() {
         String expression = "1 + ( 2 * 3 ) + ( 6 - 2 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 11;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forCheckingDivisionOfNumberWhenOutputIsFloatingPoint() throws Exception {
+    public void forCheckingDivisionOfNumberWhenOutputIsFloatingPoint() {
         String expression = "22 / 3";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7.333333333333333;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingExponential() throws Exception {
+    public void forHandlingExponential() {
         String expression = "2 ^ 31";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2.147483648E9;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingSingleNestedBrackets() throws Exception {
+    public void forHandlingSingleNestedBrackets() {
         String expression = "1 + ( 2 + ( 2 + 3 ) )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 8;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingMultipleBrackets() throws Exception {
+    public void forHandlingMultipleBrackets() {
         String expression = "1 + ( ( 2 * 3 ) + ( 10 / 5 ) * 2 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 17;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingMultipleNestedBrackets() throws Exception {
+    public void forHandlingMultipleNestedBrackets() {
         String expression = "1 + ( ( 2 * 3 ) + ( 10 / 5 ) ^ 2 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 65;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingNestedBracketsInNestedBrackets() throws Exception {
+    public void forHandlingNestedBracketsInNestedBrackets() {
         String expression = "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / 5 ) ^ 2 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 17;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandlingNestedBracketsInNestedBracketsWithNegativeNumbers() throws Exception {
+    public void forHandlingNestedBracketsInNestedBracketsWithNegativeNumbers() {
         String expression = "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / -5 ) ^ 2 )";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forNegativeNumberWithoutSpace() throws Exception {
+    public void forNegativeNumberWithoutSpace() {
         String expression = "10+-5";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSingleBracketWithMultipleSpace() throws Exception {
+    public void forSingleBracketWithMultipleSpace() {
         String expression = "1+(  2*3)";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSingleBraketsWithoutSpace() throws Exception {
+    public void forSingleBraketsWithoutSpace() {
         String expression = "1+(2*3)";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forNestedBracketsWithoutSpaces() throws Exception {
+    public void forNestedBracketsWithoutSpaces() {
         String expression = "1+(2*(3+4))";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 15;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forAdditionOfTwoFloatingPoints() throws Exception {
+    public void forAdditionOfTwoFloatingPoints() {
         String expression = "1.0+2.0";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3.0;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forHandingPowerOfNegativeNumber() throws Exception {
+    public void forHandingPowerOfNegativeNumber() {
         String expression = "-1^-1";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSingleNegativeNumberInsideBrackets() throws Exception {
+    public void forSingleNegativeNumberInsideBrackets() {
         String expression = "(-1)";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forSubstractionOfTwoNumbers() throws Exception {
+    public void forSubstractionOfTwoNumbers() {
         String expression = "-1+-2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -3;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forNegativeNumbers() throws Exception {
+    public void forNegativeNumbers() {
         String expression = "-1-1";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -2;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forGivingOneOperand() throws Exception {
+    public void forGivingOneOperand() {
         String expression = "(((((3)))))";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forNegativeOperandAfterNegativeOperator() throws Exception {
+    public void forNegativeOperandAfterNegativeOperator() {
         String expression = "1.25--0.25";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1.5;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void forHandlingExceptionIfCharacterIsGivenInExpression() {
         String expression = "a1+2";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void forHandlingExceptionForSingleOperatorWithSingleOperand() throws Exception {
+    public void forHandlingExceptionForSingleOperatorWithSingleOperand() {
         String expression = "22*";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forNegativeExponential() throws Exception {
+    public void forNegativeExponential() {
         String expression = "8^-1";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0.125;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void forFloatingPoint() throws Exception {
+    public void forFloatingPoint() {
         String expression = ".5+.5";
-        ExpressionEvaluator ee = new ExpressionEvaluator(expression);
+        ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation();
+        double actual = ee.calculation(expression);
         assertEquals(expected, actual);
     }
 }
