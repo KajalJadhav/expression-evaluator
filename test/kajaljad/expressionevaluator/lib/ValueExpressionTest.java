@@ -30,6 +30,6 @@ public class ValueExpressionTest{
     }
     @Test
     public void _5_plus_5_is_10(){
-        assertThat(_5.operate(new Plus(),_5), is(_10));
+        assertThat(_5.operate(Operator.plus,_5), is(_10));
     }
 }
