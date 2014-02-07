@@ -5,7 +5,7 @@ public class Expression {
     private Expression left;
     private String operator;
     private Expression right;
-
+    private Operations operations = new Operations();
 
     public Expression(Double value) {
         this.value = value;
@@ -20,5 +20,9 @@ public class Expression {
 
     public Double getValue() {
         return value;
+    }
+
+    public Expression evaluate() {
+        return operations.performOperations(left, operator, right);
     }
 }

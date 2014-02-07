@@ -6,7 +6,6 @@ import java.util.List;
 public class ExpressionEvaluator {
 
     private ExpressionParser expressionParser = new ExpressionParser();
-    private Operations operations = new Operations();
 
     private Expression calculateExpression(String expression) {
         String[] expressionParts = expression.trim().split(" ");
@@ -17,11 +16,11 @@ public class ExpressionEvaluator {
     }
 
     private Expression calculate(List<String> operators, List<Double> operands) {
-        Expression number1 =new Expression(operands.get(0));
+        Expression number1 = new Expression(operands.get(0));
         for (int i = 0; i < operators.size(); i++) {
             String operator = operators.get(i);
-            Expression number2 =new Expression(operands.get(i + 1));
-            number1 =operations.performOperations(number1, operator, number2);
+            Expression number2 = new Expression(operands.get(i + 1));
+            number1 = new Expression(number1, operator, number2).evaluate();
         }
         return number1;
     }
