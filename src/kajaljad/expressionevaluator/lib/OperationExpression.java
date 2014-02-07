@@ -3,20 +3,20 @@ package kajaljad.expressionevaluator.lib;
 /**
  * Created by kajaljad on 2/7/14.
  */
-public class OperationExpression {
+public class OperationExpression implements IExpression {
 
-    private final ValueExpression left;
+    private final IExpression left;
     private final Operator operator;
-    private final ValueExpression right;
+    private final IExpression right;
 
-    public OperationExpression(ValueExpression left, Operator operator, ValueExpression right) {
+    public OperationExpression(IExpression left, Operator operator, IExpression right) {
         this.left = left;
         this.operator = operator;
         this.right = right;
     }
 
     public ValueExpression evaluate() {
-        return left.operate(operator, right);
+        return left.evaluate().operate(operator, right.evaluate());
     }
 
     @Override

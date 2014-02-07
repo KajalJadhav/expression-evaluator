@@ -1,9 +1,7 @@
 package kajaljad.expressionevaluator.lib;
 
-/**
- * Created by kajaljad on 2/7/14.
- */
-public class ValueExpression {
+;
+public class ValueExpression implements IExpression {
     private Double value;
 
     public ValueExpression(double value) {
