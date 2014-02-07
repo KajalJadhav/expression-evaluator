@@ -5,7 +5,6 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 
 public class ExpressionEvaluatorTest {
-
     @Test
     public void forWrongInput() throws Exception {
         String expression = "12345";
@@ -95,7 +94,6 @@ public class ExpressionEvaluatorTest {
         double actual = ee.calculation();
         assertEquals(expected, actual);
     }
-
 
     @Test
     public void forAdditionOfThreeNumbers() throws Exception {
@@ -382,7 +380,7 @@ public class ExpressionEvaluatorTest {
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         double expected = 0;
         double actual = ee.calculation();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -391,7 +389,7 @@ public class ExpressionEvaluatorTest {
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         double expected = 0.125;
         double actual = ee.calculation();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -400,6 +398,6 @@ public class ExpressionEvaluatorTest {
         ExpressionEvaluator ee = new ExpressionEvaluator(expression);
         double expected = 1;
         double actual = ee.calculation();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }
