@@ -40,7 +40,7 @@ public class Operations {
 
     public Expression performOperations(Expression operand1, String operator, Expression operand2) {
 
-        Double result = operationMap.get(operator).evaluate(operand1.getValue(), operand2.getValue());
+        Double result = operationMap.get(operator).evaluate(Double.parseDouble(operand1.toString()),Double.parseDouble(operand2.toString()));
         return new Expression(result);
     }
 

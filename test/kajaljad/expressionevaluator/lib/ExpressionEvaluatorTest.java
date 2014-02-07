@@ -10,7 +10,7 @@ public class ExpressionEvaluatorTest {
         String expression = "12345";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 12345;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -19,7 +19,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -28,7 +28,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-1 + -2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -3;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -37,7 +37,7 @@ public class ExpressionEvaluatorTest {
         String expression = "2 - 1";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -46,7 +46,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-10 - -1";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -9;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -55,7 +55,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 * 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -64,7 +64,7 @@ public class ExpressionEvaluatorTest {
         String expression = "10 * -2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -20;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -73,7 +73,7 @@ public class ExpressionEvaluatorTest {
         String expression = "10 / 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -82,7 +82,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-10 / 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -5;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -91,7 +91,7 @@ public class ExpressionEvaluatorTest {
         String expression = "10 ^ 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 100;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -100,7 +100,7 @@ public class ExpressionEvaluatorTest {
         String expression = "2 + 2 + 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -109,7 +109,7 @@ public class ExpressionEvaluatorTest {
         String expression = "2 + 2 + -2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -118,7 +118,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-10 ^ 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 100;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -127,7 +127,7 @@ public class ExpressionEvaluatorTest {
         String expression = "10 - 2 - 2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -136,7 +136,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * 3";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 9;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -145,7 +145,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * -3";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -9;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -154,7 +154,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * 3 - 4";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -163,7 +163,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * 3 - 4 / 5";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -172,7 +172,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * 3 - 4 / 5 ^ 6";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -181,7 +181,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + 2 * 3 - 4 / 5 ^ -6";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -190,7 +190,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( 2 + 3 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 6;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -199,7 +199,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( 2 * 3 ) + ( 6 - 2 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 11;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -208,7 +208,7 @@ public class ExpressionEvaluatorTest {
         String expression = "22 / 3";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7.333333333333333;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -217,7 +217,7 @@ public class ExpressionEvaluatorTest {
         String expression = "2 ^ 31";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 2.147483648E9;
-        Double actual = ee.calculation(expression);
+        Double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -226,7 +226,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( 2 + ( 2 + 3 ) )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 8;
-        Double actual = ee.calculation(expression);
+        Double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -235,7 +235,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( ( 2 * 3 ) + ( 10 / 5 ) * 2 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 17;
-        Double actual = ee.calculation(expression);
+        Double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -244,7 +244,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( ( 2 * 3 ) + ( 10 / 5 ) ^ 2 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 65;
-        Double actual = ee.calculation(expression);
+        Double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -253,7 +253,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / 5 ) ^ 2 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 17;
-        Double actual = ee.calculation(expression);
+        Double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -262,7 +262,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1 + ( ( 2 * ( 4 - 3 ) ) + ( 10 / -5 ) ^ 2 )";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -271,7 +271,7 @@ public class ExpressionEvaluatorTest {
         String expression = "10+-5";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 5;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -280,7 +280,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1+(  2*3)";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -289,7 +289,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1+(2*3)";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 7;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -298,7 +298,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1+(2*(3+4))";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 15;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -307,7 +307,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1.0+2.0";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3.0;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -316,7 +316,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-1^-1";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -325,7 +325,7 @@ public class ExpressionEvaluatorTest {
         String expression = "(-1)";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -334,7 +334,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-1+-2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -3;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -343,7 +343,7 @@ public class ExpressionEvaluatorTest {
         String expression = "-1-1";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = -2;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -352,7 +352,7 @@ public class ExpressionEvaluatorTest {
         String expression = "(((((3)))))";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 3;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -361,7 +361,7 @@ public class ExpressionEvaluatorTest {
         String expression = "1.25--0.25";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1.5;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -370,7 +370,7 @@ public class ExpressionEvaluatorTest {
         String expression = "a1+2";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -379,7 +379,7 @@ public class ExpressionEvaluatorTest {
         String expression = "22*";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -388,7 +388,7 @@ public class ExpressionEvaluatorTest {
         String expression = "8^-1";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 0.125;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 
@@ -397,7 +397,7 @@ public class ExpressionEvaluatorTest {
         String expression = ".5+.5";
         ExpressionEvaluator ee = new ExpressionEvaluator();
         double expected = 1;
-        double actual = ee.calculation(expression);
+        double actual = ee.calculate(expression);
         assertEquals(expected, actual);
     }
 }

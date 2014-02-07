@@ -35,14 +35,14 @@ public class ExpressionEvaluator {
         }
     }
 
-    public Double calculation(String newExpression) {
-        newExpression = expressionParser.parseInput(newExpression);
+    public Double calculate(String expr) {
+        String newExpression = expressionParser.parseInput(expr);
         StringBuilder expression = new StringBuilder(newExpression);
         if (expression.indexOf("(") > -1) {
             calculateBrackets(expression);
-            return calculation(expression.toString());
+            return calculate(expression.toString());
         }
-        return calculateExpression(expression.toString()).getValue();
+        return Double.parseDouble(calculateExpression(expression.toString()).toString());
     }
 
     private void calculateBrackets(StringBuilder expression) {
@@ -59,7 +59,7 @@ public class ExpressionEvaluator {
         }
         String expressionInsideBrackets = expression.substring(startingIndex + 1, endingIndex);
         result = calculateExpression(expressionInsideBrackets);
-        expression.replace(startingIndex, endingIndex + 1, Double.toString(result.getValue()));
+        expression.replace(startingIndex, endingIndex + 1, result.toString());
     }
 
 }
