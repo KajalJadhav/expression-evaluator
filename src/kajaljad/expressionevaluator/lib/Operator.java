@@ -1,5 +1,10 @@
 package kajaljad.expressionevaluator.lib;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by kajaljad on 2/7/14.
  */
@@ -17,6 +22,16 @@ public class Operator {
     public static Operator divide = new Operator("/");
     public static Operator power = new Operator("^");
 
+    public static Operator parse(Character symbol) {
+        switch (symbol){
+            case '+': return plus;
+            case '-':return minus;
+            case '*':return multiply;
+            case '/':return divide;
+            case '^': return power;
+        }
+        throw new RuntimeException("unsupported operator "+symbol);
+    }
 
     public double operate(double left, double right) {
         if (symbol == "+") return left + right;
