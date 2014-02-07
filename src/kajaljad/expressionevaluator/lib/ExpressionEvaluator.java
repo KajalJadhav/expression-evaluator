@@ -8,7 +8,7 @@ public class ExpressionEvaluator {
     private ExpressionParser expressionParser = new ExpressionParser();
     private Operations operations = new Operations();
 
-    private double calculateExpression(String expression) {
+    private Expression calculateExpression(String expression) {
         String[] expressionParts = expression.trim().split(" ");
         List<Double> operands = new ArrayList<Double>();
         List<String> operators = new ArrayList<String>();
@@ -16,13 +16,12 @@ public class ExpressionEvaluator {
         return calculate(operators, operands);
     }
 
-    private double calculate(List<String> operators, List<Double> operands) {
-
-        double number1 = operands.get(0);
+    private Expression calculate(List<String> operators, List<Double> operands) {
+        Expression number1 =new Expression(operands.get(0));
         for (int i = 0; i < operators.size(); i++) {
             String operator = operators.get(i);
-            double number2 = operands.get(i + 1);
-            number1 = operations.performOperations(operator, number1, number2);
+            Expression number2 =new Expression(operands.get(i + 1));
+            number1 =operations.performOperations(number1, operator, number2);
         }
         return number1;
     }
@@ -37,20 +36,20 @@ public class ExpressionEvaluator {
         }
     }
 
-    public double calculation(String newExpression) {
+    public Double calculation(String newExpression) {
         newExpression = expressionParser.parseInput(newExpression);
         StringBuilder expression = new StringBuilder(newExpression);
         if (expression.indexOf("(") > -1) {
             calculateBrackets(expression);
             return calculation(expression.toString());
         }
-        return calculateExpression(expression.toString());
+        return calculateExpression(expression.toString()).getValue();
     }
 
     private void calculateBrackets(StringBuilder expression) {
         int startingIndex = -1;
         int endingIndex = -1;
-        double result;
+        Expression result;
         for (int i = 0; i < expression.length(); i++) {
             if ('(' == expression.charAt(i))
                 startingIndex = i;
@@ -61,7 +60,7 @@ public class ExpressionEvaluator {
         }
         String expressionInsideBrackets = expression.substring(startingIndex + 1, endingIndex);
         result = calculateExpression(expressionInsideBrackets);
-        expression.replace(startingIndex, endingIndex + 1, Double.toString(result));
+        expression.replace(startingIndex, endingIndex + 1, Double.toString(result.getValue()));
     }
 
 }

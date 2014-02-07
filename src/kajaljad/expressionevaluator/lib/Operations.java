@@ -4,40 +4,44 @@ import java.util.HashMap;
 import java.util.Map;
 
 interface Evaluate {
-    double evaluate(double number1, double number2);
+    double evaluate(Double number1, Double number2);
 }
+
 public class Operations {
-    Map<String,Evaluate> operationMap =new HashMap<String, Evaluate>();
+    Map<String, Evaluate> operationMap = new HashMap<String, Evaluate>();
 
     public Operations() {
         operationMap.put("+", new Evaluate() {
-            public double evaluate(double number1, double number2) {
+            public double evaluate(Double number1, Double number2) {
                 return number1 + number2;
             }
         });
         operationMap.put("-", new Evaluate() {
-            public double evaluate(double number1, double number2) {
+            public double evaluate(Double number1, Double number2) {
                 return number1 - number2;
             }
         });
         operationMap.put("*", new Evaluate() {
-            public double evaluate(double number1, double number2) {
+            public double evaluate(Double number1, Double number2) {
                 return number1 * number2;
             }
         });
         operationMap.put("/", new Evaluate() {
-            public double evaluate(double number1, double number2) {
+            public double evaluate(Double number1, Double number2) {
                 return number1 / number2;
             }
         });
         operationMap.put("^", new Evaluate() {
-            public double evaluate(double number1, double number2) {
+            public double evaluate(Double number1, Double number2) {
                 return Math.pow(number1, number2);
             }
         });
     }
-    public double performOperations(String operator, double number1, double number2) {
-        return operationMap.get(operator).evaluate(number1,number2);
+
+    public Expression performOperations(Expression operand1, String operator, Expression operand2) {
+
+        Double result = operationMap.get(operator).evaluate(operand1.getValue(), operand2.getValue());
+        return new Expression(result);
     }
 
 }
