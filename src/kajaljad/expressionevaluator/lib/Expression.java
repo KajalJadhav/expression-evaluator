@@ -1,10 +1,13 @@
 package kajaljad.expressionevaluator.lib;
 
 public class Expression {
+
     private Double value;
+
     private Expression left;
     private String operator;
     private Expression right;
+
     private Operations operations = new Operations();
 
     public Expression(Double value) {
@@ -20,7 +23,7 @@ public class Expression {
 
 
     public Expression evaluate() {
-        return operations.performOperations(left, operator, right);
+        return value==null? operations.performOperations(left, operator, right):new Expression(value);
     }
 
     @Override

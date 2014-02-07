@@ -44,6 +44,11 @@ public class ExpressionTest {
     }
 
     @Test
+    public void _5_evaluates_5() {
+        assertThat(_5.evaluate(), is(_5));
+    }
+
+    @Test
     public void _2_toString_is_2() {
         assertThat(_2.toString(), is("2.0"));
     }
@@ -52,5 +57,4 @@ public class ExpressionTest {
     public void _2_plus_3_toString_is_2_plus_3() {
         assertThat(_2_plus_3.toString(), is("2.0+3.0"));
     }
-
 }
