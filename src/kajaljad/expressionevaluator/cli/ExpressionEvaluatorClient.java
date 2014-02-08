@@ -1,11 +1,12 @@
 package kajaljad.expressionevaluator.cli;
 
 import kajaljad.expressionevaluator.lib.ExpressionEvaluator;
+import kajaljad.expressionevaluator.lib.IExpression;
 
-public class ExpressionEvaluatorClient  {
-    public static void main(String[] args){
+public class ExpressionEvaluatorClient {
+    public static void main(String[] args) {
         ExpressionEvaluator ee = new ExpressionEvaluator();
-        Double result = ee.calculate(args[0]);
-        System.out.println(result);
+        IExpression expression = ee.createExpression(args[0]);
+        System.out.println(expression.evaluate());
     }
 }

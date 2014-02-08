@@ -16,7 +16,7 @@ public class ExpressionParser2 {
 
     public IExpression parse(String text) {
 
-        return parseInternal(text,new ArrayList<BracketExpression>());
+        return parseInternal(text, new ArrayList<BracketExpression>());
     }
 
     private IExpression parseInternal(String text, List<BracketExpression> brackets) {
@@ -40,19 +40,19 @@ public class ExpressionParser2 {
 
     private String readBrackets(String text) {
         String content = text;
-        int start=content.length(), end=-1;
+        int start, end;
         do {
-            end = content.indexOf(')', end + 1);
-            start = end>0? content.substring(0,start-1).lastIndexOf('(', start):-1;
-            if(start >= 0){
-                String subText = content.substring(start+2, end-1);
+            end = content.indexOf(')');
+            start = end > 0 ? content.substring(0, end).lastIndexOf('(', end) : -1;
+             if (start >= 0) {
+                String subText = content.substring(start + 2, end - 1);
                 BracketExpression expr = new BracketExpression(new ExpressionParser2().parseInternal(subText, brackets));
                 brackets.add(expr);
-                int location = brackets.size()-1;
-                String before,after;
-                before = start>2?content.substring(0,start-1)+" ":"";
-                after = end<content.length()-1?" "+content.substring(end+1,content.length()):"";
-                content = before+"B"+location+' '+after;
+                int location = brackets.size() - 1;
+                String before, after;
+                before =content.substring(0, start);
+                after = end < content.length() - 1 ? content.substring(end + 1, content.length()) : "";
+                content = before + "B" + location + after;
             }
         } while (start >= 0);
         return content;
@@ -70,7 +70,7 @@ public class ExpressionParser2 {
 
     private void readToken(String text) {
 
-        if(text.charAt(0) == 'B'){
+        if (text.charAt(0) == 'B') {
             int location = Integer.parseInt(text.split("B")[1]);
             BracketExpression expr = brackets.get(location);
             if (left == null) left = expr;
