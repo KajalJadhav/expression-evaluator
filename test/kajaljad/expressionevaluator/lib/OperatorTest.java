@@ -13,7 +13,7 @@ public class OperatorTest {
         assertThat(Operator.plus.operate(1d, 2d),is(3d));
     }
     @Test
-    public void _1_multipy_2_is_2(){
+    public void _1_multiply_2_is_2(){
         assertThat(Operator.multiply.operate(1d, 2d),is(2d));
     }
     @Test
