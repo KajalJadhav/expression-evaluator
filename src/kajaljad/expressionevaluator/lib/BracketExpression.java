@@ -1,8 +1,5 @@
 package kajaljad.expressionevaluator.lib;
 
-/**
- * Created by kajaljad on 2/7/14.
- */
 public class BracketExpression implements IExpression{
     private final IExpression inner;
 

@@ -9,7 +9,8 @@ public class ExpressionParser {
     List<BracketExpression> brackets;
 
     public IExpression parse(String text) {
-
+        text = text.trim();
+        text = parseInput(text);
         return parseInternal(text, new ArrayList<BracketExpression>());
     }
 
@@ -42,10 +43,9 @@ public class ExpressionParser {
                 brackets.add(expr);
 
                 int location = brackets.size() - 1;
-                String before, after;
-                before = content.substring(0, start);
-                after = end < content.length() - 1 ? content.substring(end + 1, content.length()) : "";
 
+                String before = content.substring(0, start);
+                String after = content.substring(end + 1, content.length());
                 content = before + "B" + location + after;
             }
         } while (start >= 0);
@@ -63,7 +63,6 @@ public class ExpressionParser {
     }
 
     private void readToken(String text) {
-
         if (text.charAt(0) == 'B') {
             int location = Integer.parseInt(text.split("B")[1]);
             BracketExpression expr = brackets.get(location);
@@ -78,5 +77,18 @@ public class ExpressionParser {
         } catch (NumberFormatException e) {
             operator = Operator.parse(text.charAt(0));
         }
+    }
+
+    private String parseInput(String expression) {
+        expression = expression.replaceAll(" +", "");
+        return expression.replaceAll("\\+", " + ")
+                .replaceAll("\\-", " - ")
+                .replaceAll("\\*", " * ")
+                .replaceAll("/", " / ")
+                .replaceAll("\\^", " ^ ")
+                .replaceAll("\\(", "( ")
+                .replaceAll("\\)", " )")
+                .replaceAll("  - ", " -")
+                .replaceFirst("^ - ", "-");
     }
 }

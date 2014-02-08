@@ -2,7 +2,6 @@ package kajaljad.expressionevaluator.lib;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -266,41 +265,6 @@ public class ExpressionEvaluatorTest {
         assertThat(expected, is(actual.evaluate()));
     }
 
-    @Test
-    public void forNegativeNumberWithoutSpace() {
-        String text = "10 + -5";
-
-        ValueExpression expected = new ValueExpression(5);
-        IExpression actual = ee.createExpression(text);
-        assertThat(expected, is(actual.evaluate()));
-    }
-
-    @Test
-    public void forSingleBracketWithMultipleSpace() {
-        String text = "1 + ( 2 * 3 )";
-
-        ValueExpression expected = new ValueExpression(7);
-        IExpression actual = ee.createExpression(text);
-        assertThat(expected, is(actual.evaluate()));
-    }
-
-    @Test
-    public void forSingleBracketsWithoutSpace() {
-        String text = "1 + ( 2 * 3 )";
-
-        ValueExpression expected = new ValueExpression(7);
-        IExpression actual = ee.createExpression(text);
-        assertThat(expected, is(actual.evaluate()));
-    }
-
-    @Test
-    public void forNestedBracketsWithoutSpaces() {
-        String text = "1 + ( 2 * ( 3 + 4 ) )";
-
-        ValueExpression expected = new ValueExpression(15);
-        IExpression actual = ee.createExpression(text);
-        assertThat(expected, is(actual.evaluate()));
-    }
 
     @Test
     public void forAdditionOfTwoFloatingPoints() {
@@ -330,7 +294,7 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void forAdditingOfTwoNegativeNumbers() {
+    public void forAddingOfTwoNegativeNumbers() {
         String text = "-1 + -2";
 
         ValueExpression expected = new ValueExpression(-3);
@@ -349,7 +313,7 @@ public class ExpressionEvaluatorTest {
 
     @Test
     public void forGivingOneOperand() {
-        String text = "( ( ( ( ( 3 ) ) ) ) )";
+        String text = "(((((3)))))";
 
         ValueExpression expected = new ValueExpression(3);
         IExpression actual = ee.createExpression(text);

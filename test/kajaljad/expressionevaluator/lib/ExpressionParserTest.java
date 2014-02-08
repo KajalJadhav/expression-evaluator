@@ -2,7 +2,9 @@ package kajaljad.expressionevaluator.lib;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class ExpressionParserTest {
     ExpressionParser parser = new ExpressionParser();
@@ -20,7 +22,7 @@ public class ExpressionParserTest {
 
     @Test
     public void _5() {
-        assertEquals(parse("5"), _5);
+        assertEquals(parse(" 5 "), _5);
     }
 
     @Test(expected = Exception.class)
@@ -61,5 +63,50 @@ public class ExpressionParserTest {
     @Test
     public void _5_plus_2_plus_3_in__bracket() {
         assertEquals(parse("5 + ( 2 + 3 )"), new OperationExpression(_5, Operator.plus, new BracketExpression(_2_plus_3)));
+    }
+
+    @Test
+    public void forSingleBracketWithMultipleSpace() {
+        String text = "1 + (     2 * 3 )";
+
+        ValueExpression expected = new ValueExpression(7);
+        IExpression actual = parse(text);
+        assertThat(expected, is(actual.evaluate()));
+    }
+
+    @Test
+    public void forNegativeNumberWithoutSpace() {
+        String text = "10+-5";
+
+        ValueExpression expected = new ValueExpression(5);
+        IExpression actual = parse(text);
+        assertThat(expected, is(actual.evaluate()));
+    }
+
+    @Test
+    public void forSingleBracketsWithoutSpace() {
+        String text = "1+(2*3)";
+
+        ValueExpression expected = new ValueExpression(7);
+        IExpression actual = parse(text);
+        assertThat(expected, is(actual.evaluate()));
+    }
+
+    @Test
+    public void forNestedBracketsWithoutSpaces() {
+        String text = "1+(2*(3+4)    )";
+
+        ValueExpression expected = new ValueExpression(15);
+        IExpression actual = parse(text);
+        assertThat(expected, is(actual.evaluate()));
+    }
+
+    @Test
+    public void forHandlingNestedBracketsInNestedBracketsWithNegativeNumbers() {
+        String text = "1+((2*(4-3))+(10 / -5 ) ^ 2 )";
+
+        ValueExpression expected = new ValueExpression(1);
+        IExpression actual = parse(text);
+        assertThat(expected, is(actual.evaluate()));
     }
 }
